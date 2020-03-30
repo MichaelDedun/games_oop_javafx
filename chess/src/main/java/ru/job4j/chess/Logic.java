@@ -25,10 +25,14 @@ public class Logic {
         boolean rst = false;
         int index = this.findBy(source);
         if (index != -1) {
-            Cell[] steps = this.figures[index].way(source, dest);
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest) && !checkWay(steps)) {
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
+            try {
+                Cell[] steps = this.figures[index].way(source, dest);
+                if (steps.length > 0 && steps[steps.length - 1].equals(dest) && !checkWay(steps)) {
+                    rst = true;
+                    this.figures[index] = this.figures[index].copy(dest);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
         return rst;
@@ -36,8 +40,8 @@ public class Logic {
 
     public boolean checkWay(Cell[] steps) {
         boolean result = false;
-        for(Cell step: steps) {
-            if (findBy(step) != - 1) {
+        for (Cell step : steps) {
+            if (findBy(step) != -1) {
                 result = true;
                 break;
             }

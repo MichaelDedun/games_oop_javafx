@@ -6,7 +6,7 @@ import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.black.BishopBlack;
 
 public class LogicTest {
-    
+
     @Test
     public void testMoveWhenTrue() {
         Cell source = Cell.findBy(2, 7);
